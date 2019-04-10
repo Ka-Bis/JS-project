@@ -1,5 +1,5 @@
 // Initialisation tableau de donnée
-let mot = ['javascript', 'arinfo', 'pancake','voiture', 'telephone', 'developpeur','chomeur'];
+let mot = ['javascript', 'arinfo', 'pancake','voiture', 'telephone', 'developpeur','chomeur','giletjaune'];
 
 // Genere un mot aleatoire du tableau
 /*Math.floor permet d'arondir à l'entier inferieur, 
@@ -31,6 +31,42 @@ A chaque fois que le joueur trouve une lettre, la valeur de la variable diminue 
 autant de fois que la lettre apparait dans le mot secret*/
 
 while (nblettresManquantes > 0) {
-    alert(tabreponse.join('')); //Montre la progression du joueur
-    /*les element sont concaténé dasn un chaine de caractere, separé oar un espace*/
+    alert(tabreponse.join(' ')); //Montre la progression du joueur
+    /*les element sont concaténé dans un chaine de caractere, separé par un espace
+    Ensuite, elle est affiché dans le popup.
+    Ex: le mot est arinfo joueur a trouvé le 'a' et le 'r' 
+    => rendu dans le tableau => ["a","r","_","_","_","_"] 
+    => rendu dans le popup => a r _ _ _ _*/
+
+    let reponse = prompt("Devine un lettre, ou clique sur annuler pour quiter");
+    /* Ici on repcupere la reponse du joueur aue l'on stocke dans une 
+    variable 'reponse'. Apres il peut y a avoir 4 chose diffe :
+    1- Le joeur appuis sur ANNULER => la valeur de reponse est 'null"
+    Elle est genere avec la 1ere condition. Si la condition est 'true'
+    on sort de la boucle avec 'break" 
+    
+    2/3- le joueur ecrit plusieur ou aucune lettre dans le champ.
+    S'il click sur OK en n'ecrivant rien => la valeur de la reponse
+    sera vide donc reponse.length = 0.
+    S'il tape plusieur lettre, la valeur de reponse.length > 1
+    elle genere par la 2eme condition. Si la valeur est > 1
+    un message d'alerte s'affichera en demandant de n'ecrire qu'une
+    seule lettre
+    
+    4- La reponse du joueur est valide. Le joueur n'a tapé qu'une seule 
+    lettre. Dans ce cas lors de la validation, le programme doit mettre a jour 
+    la progression du jeu en fonction de la reponse*/
+    if (reponse === null) {
+        break;
+    } else if (reponse.length !== 1) {
+        alert("Saisie une seule lettre !");
+    } else {
+        for (let j=0; j < Secretword.length; j++){
+            if (Secretword[j] === reponse){
+                tabreponse[j] = reponse;
+                nblettresManquantes--;
+            }
+        }
+
+    }
 }
