@@ -9,7 +9,7 @@ Ici, avec la methode Math.floor et Math.random, on genere
 dans le tableau une position aleatoire multiplie par la longueur du tableau 
 */
 let Secretword = mot[Math.floor(Math.random()* mot.length)];
-console.log('Le mot secret est : ',Secretword);
+// console.log('Le mot secret est : ',Secretword);
 
 //Reponse
 // Initialisation  tableau reponse
@@ -67,6 +67,12 @@ while (nblettresManquantes > 0) {
                 nblettresManquantes--;
             }
         }
-
+        /*Dans la derniere condition, la boucle permet de parcourir
+        la longeur du mot secret. A l'interieur de la boucle, la condition
+        'if' permet de comparer la lettre demandé au mot secret. Si la lettre
+        correspond a une lettre du mot secret on met à jour le pendu*/
     }
 }
+
+alert(tabreponse.join(' '));
+alert(`Bravo ! le mot secret est ${Secretword}`);
